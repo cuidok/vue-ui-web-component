@@ -2,6 +2,7 @@
 
 import BasicButton from "@/components/button/BasicButton.vue";
 import DangerButton from "@/components/button/DangerButton.vue";
+import PrimaryButton from "@/components/button/PrimaryButton.vue";
 </script>
 
 <template>
@@ -18,6 +19,9 @@ import DangerButton from "@/components/button/DangerButton.vue";
       </div>
       <div class="buttons-preview__button">
         <danger-button>Danger Button</danger-button>
+      </div>
+      <div class="buttons-preview__button">
+        <primary-button>Primary Button</primary-button>
       </div>
     </div>
   </div>
