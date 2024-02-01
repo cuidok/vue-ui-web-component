@@ -71,7 +71,7 @@ const loadingRingStyle = computed(() => {
 .basic-button__color {
   --color-background: #f1f1f1;
   --color-background-hover: #e7e7e7;
-  --color-text: #000000;
+  --color-text: #494949FF;
   --color-text-hover: #000000;
   --color-loading-ring: #6070ff;
   --color-loading-ring-background: #ffffff;
@@ -81,7 +81,7 @@ const loadingRingStyle = computed(() => {
   width: 120px;
   height: 36px;
   border: none;
-  border-radius: 5px;
+  border-radius: 2px;
   background-color: var(--color-background);
   color: var(--color-text);
   font-size: 1rem;
