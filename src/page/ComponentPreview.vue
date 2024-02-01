@@ -1,24 +1,18 @@
 <script setup>
 
+import ButtonPreview from "@/page/preview/ButtonPreview.vue";
 </script>
 
 <template>
   <div class="app__container">
-    <div class="app__menu">
-
-    </div>
+    <div class="app__menu"></div>
     <div class="app__body">
-
+      <button-preview></button-preview>
     </div>
   </div>
 </template>
 
 <style scoped>
-.app__container {
-  --menu-color: #d7d7d7;
-  --body-color: #dedede;
-}
-
 .app__container {
   width: 100%;
   height: 98vh;
@@ -33,7 +27,6 @@
   width: 100px;
   height: 100%;
   margin-right: 10px;
-  background-color: var(--menu-color);
 }
 
 .app__body {
@@ -41,9 +34,6 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--body-color);
 }
 
 </style>
