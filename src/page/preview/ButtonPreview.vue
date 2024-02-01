@@ -17,7 +17,7 @@ import DangerButton from "@/components/button/DangerButton.vue";
         <basic-button :is-loading="true">Loading Button</basic-button>
       </div>
       <div class="buttons-preview__button">
-        <danger-button :handle-click="() => console.log('hello')">Danger Button</danger-button>
+        <danger-button>Danger Button</danger-button>
       </div>
     </div>
   </div>
