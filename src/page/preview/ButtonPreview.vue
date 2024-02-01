@@ -1,6 +1,7 @@
 <script setup>
 
 import BasicButton from "@/components/button/BasicButton.vue";
+import DangerButton from "@/components/button/DangerButton.vue";
 </script>
 
 <template>
@@ -14,6 +15,9 @@ import BasicButton from "@/components/button/BasicButton.vue";
       </div>
       <div class="buttons-preview__button">
         <basic-button :is-loading="true">Loading Button</basic-button>
+      </div>
+      <div class="buttons-preview__button">
+        <danger-button :handle-click="() => console.log('hello')">Danger Button</danger-button>
       </div>
     </div>
   </div>

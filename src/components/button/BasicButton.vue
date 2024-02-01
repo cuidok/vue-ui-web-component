@@ -1,6 +1,8 @@
 <script setup>
 import {computed, ref} from "vue";
 
+const isHovered = ref(false);
+
 const props = defineProps({
   style: {
     type: Object,
@@ -31,8 +33,6 @@ const props = defineProps({
     },
   },
 });
-
-const isHovered = ref(false);
 
 const buttonStyle = computed(() => {
   return {
@@ -78,8 +78,12 @@ const loadingRingStyle = computed(() => {
 }
 
 .basic-button__button {
-  width: 100%;
-  height: 100%;
+  width: 120px;
+  height: 36px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--color-background);
+  color: var(--color-text);
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
@@ -89,7 +93,16 @@ const loadingRingStyle = computed(() => {
   align-items: center;
 }
 
+.basic-button__button:hover {
+  background-color: var(--color-background-hover);
+  color: var(--color-text-hover);
+}
+
 .ring-loading {
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--color-loading-ring-background);
+  border-top-color: var(--color-loading-ring);
   border-radius: 50%;
   background-color: transparent;
   animation: spin-ring 1s linear infinite;
