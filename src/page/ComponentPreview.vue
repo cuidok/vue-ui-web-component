@@ -1,12 +1,14 @@
 <script setup>
 
 import ButtonPreview from "@/page/preview/ButtonPreview.vue";
+import TextPreview from "@/page/preview/TextPreview.vue";
 </script>
 
 <template>
   <div class="app__container">
     <div class="app__menu"></div>
     <div class="app__body">
+      <text-preview></text-preview>
       <button-preview></button-preview>
     </div>
   </div>
