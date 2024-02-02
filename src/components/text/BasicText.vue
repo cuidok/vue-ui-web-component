@@ -6,8 +6,8 @@ const props = defineProps({
     type: Object,
     default: () => {
       return {
-        fontSize: '15px',
-        fontWeight: 'normal',
+        fontSize: 'var(--font-size)',
+        fontWeight: 'var(--font-weight)',
         color: 'var(--color-text)',
       };
     },
@@ -26,14 +26,16 @@ const computedStyle = computed(() => {
 </script>
 
 <template>
-  <p class="normal-text__text normal-text__color" :style="computedStyle">
+  <p class="normal-text__text normal-text__style" :style="computedStyle">
     <slot></slot>
   </p>
 </template>
 
 <style scoped>
-.normal-text__color {
-  --color-text: #494949FF;
+.normal-text__style {
+  --color-text: #181818;
+  --font-size: 16px;
+  --font-weight: normal;
 }
 
 .normal-text__text {
@@ -50,8 +52,8 @@ const computedStyle = computed(() => {
       'Droid Sans',
       'Helvetica Neue',
       sans-serif;
-  font-size: 15px;
-  font-weight: normal;
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
   color: var(--color-text);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -59,7 +61,7 @@ const computedStyle = computed(() => {
 }
 
 p {
-  margin: 15px 0;
-  padding: 0;
+  margin: 0;
+  padding: 8px 0;
 }
 </style>
