@@ -8,18 +8,18 @@ const props = defineProps({
     type: Object,
     default: () => {
       return {
-        width: '120px',
-        height: '36px',
-        border: 'none',
-        borderRadius: '5px',
-        backgroundColor: 'var(--color-background)',
-        hoverBackgroundColor: 'var(--color-background-hover)',
-        color: 'var(--color-text)',
-        hoverColor: 'var(--color-text-hover)',
-        loadingRingSize: '16px',
-        loadingRingWeight: '2px',
-        loadingRingColor: 'var(--color-loading-ring)',
-        loadingRingBackgroundColor: 'var(--color-loading-ring-background)',
+        width: 'var(--width)',
+        height: 'var(--height)',
+        border: 'var(--border)',
+        borderRadius: 'var(--border-radius)',
+        backgroundColor: 'var(--background-color)',
+        hoverBackgroundColor: 'var(--background-color-hover)',
+        color: 'var(--color)',
+        hoverColor: 'var(--color-hover)',
+        loadingRingSize: 'var(--loading-ring-size)',
+        loadingRingWeight: 'var(--loading-ring-weight)',
+        loadingRingColor: 'var(--loading-ring-color)',
+        loadingRingBackgroundColor: 'var(--loading-ring-background-color)',
       };
     },
   },
@@ -35,29 +35,32 @@ const props = defineProps({
 });
 
 const buttonStyle = computed(() => {
+  const { width, height, border, borderRadius, backgroundColor, hoverBackgroundColor, color, hoverColor } = props.style;
   return {
-    width: props.style.width,
-    height: props.style.height,
-    border: props.style.border,
-    borderRadius: props.style.borderRadius,
-    backgroundColor: isHovered.value ? props.style.hoverBackgroundColor : props.style.backgroundColor,
-    color: isHovered.value ? props.style.hoverColor : props.style.color,
+    ...(width && { width }),
+    ...(height && { height }),
+    ...(border && { border }),
+    ...(borderRadius && { borderRadius }),
+    ...(isHovered.value && backgroundColor && { backgroundColor: hoverBackgroundColor }),
+    ...(!isHovered.value && backgroundColor && { backgroundColor }),
+    ...(isHovered.value && color && { color: hoverColor }),
+    ...(!isHovered.value && color && { color }),
   };
 });
 
 const loadingRingStyle = computed(() => {
+  const { loadingRingSize, loadingRingWeight, loadingRingColor, loadingRingBackgroundColor } = props.style;
   return {
-    width: props.style.loadingRingSize,
-    height: props.style.loadingRingSize,
-    border: `${props.style.loadingRingWeight} solid ${props.style.loadingRingBackgroundColor}`,
-    borderTopColor: props.style.loadingRingColor,
+    ...(loadingRingSize && { width: loadingRingSize }),
+    ...(loadingRingSize && { height: loadingRingSize }),
+    ...(loadingRingWeight && loadingRingBackgroundColor && { border: `${loadingRingWeight} solid ${loadingRingBackgroundColor}` }),
+    ...(loadingRingColor && { borderTopColor: loadingRingColor }),
   };
 });
-
 </script>
 
 <template>
-  <button class="basic-button__button basic-button__color"
+  <button class="basic-button__button basic-button__style"
           :style="buttonStyle"
           @mouseover="isHovered = true"
           @mouseleave="isHovered = false"
@@ -68,24 +71,32 @@ const loadingRingStyle = computed(() => {
 </template>
 
 <style scoped>
-.basic-button__color {
-  --color-background: #f1f1f1;
-  --color-background-hover: #e7e7e7;
-  --color-text: #494949FF;
-  --color-text-hover: #000000;
-  --color-loading-ring: #6070ff;
-  --color-loading-ring-background: #ffffff;
+.basic-button__style{
+  --width: 120px;
+  --height: 36px;
+  --border: none;
+  --border-radius: 5px;
+  --background-color: #f1f1f1;
+  --background-color-hover: #e7e7e7;
+  --font-size: 16px;
+  --font-wight: 500;
+  --color: #494949FF;
+  --color-hover: #000000;
+  --loading-ring-size: 16px;
+  --loading-ring-weight: 2px;
+  --loading-ring-color: #6070ff;
+  --loading-ring-background-color: #ffffff;
 }
 
 .basic-button__button {
-  width: 120px;
-  height: 36px;
-  border: none;
-  border-radius: 2px;
-  background-color: var(--color-background);
+  width: var(--width);
+  height: var(--height);
+  border: var(--border);
+  border-radius: var(--border-radius);
+  background-color: var(--background-color);
   color: var(--color-text);
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: var(--font-size);
+  font-weight: var(--font-wight);
   cursor: pointer;
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
   display: flex;
@@ -94,15 +105,15 @@ const loadingRingStyle = computed(() => {
 }
 
 .basic-button__button:hover {
-  background-color: var(--color-background-hover);
-  color: var(--color-text-hover);
+  background-color: var(--background-color-hover);
+  color: var(--color-hover);
 }
 
 .ring-loading {
-  width: 16px;
-  height: 16px;
-  border: 2px solid var(--color-loading-ring-background);
-  border-top-color: var(--color-loading-ring);
+  width: var(--loading-ring-size);
+  height: var(--loading-ring-size);
+  border: var(--loading-ring-weight) solid var(--loading-ring-background-color);
+  border-top-color: var(--loading-ring-color);
   border-radius: 50%;
   background-color: transparent;
   animation: spin-ring 1s linear infinite;
