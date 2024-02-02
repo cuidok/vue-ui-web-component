@@ -7,6 +7,7 @@ const props = defineProps({
     default: () => {
       return {
         fontSize: '15px',
+        fontWeight: 'normal',
         color: 'var(--color-text)',
       };
     },
@@ -14,9 +15,10 @@ const props = defineProps({
 });
 
 const computedStyle = computed(() => {
-  const { fontSize, color } = props.style;
+  const { fontSize, color, fontWeight } = props.style;
   return {
     ...(fontSize && { fontSize }),
+    ...(fontWeight && { fontWeight }),
     ...(color && { color }),
   };
 });
@@ -49,6 +51,7 @@ const computedStyle = computed(() => {
       'Helvetica Neue',
       sans-serif;
   font-size: 15px;
+  font-weight: normal;
   color: var(--color-text);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
