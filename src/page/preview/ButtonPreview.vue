@@ -29,7 +29,6 @@ import TextButton from "@/components/button/TextButton.vue";
       </div>
     </div>
   </div>
-
 </template>
 
 <style scoped>
