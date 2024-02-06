@@ -4,6 +4,7 @@ import BasicButton from "@/components/button/BasicButton.vue";
 import DangerButton from "@/components/button/DangerButton.vue";
 import PrimaryButton from "@/components/button/PrimaryButton.vue";
 import TextButton from "@/components/button/TextButton.vue";
+import DangerTextButton from "@/components/button/DangerTextButton.vue";
 </script>
 
 <template>
@@ -26,6 +27,9 @@ import TextButton from "@/components/button/TextButton.vue";
       </div>
       <div class="buttons-preview__button">
         <text-button>Text Button</text-button>
+      </div>
+      <div class="buttons-preview__button">
+        <danger-text-button>Danger Text Button</danger-text-button>
       </div>
     </div>
   </div>
