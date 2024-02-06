@@ -46,7 +46,7 @@ const props = defineProps({
 let hoverLineKey = ref(undefined);
 
 const tableStyle = computed(() => {
-  const { tableWidth, tableBorderColor } = props.style || {};
+  const {tableWidth, tableBorderColor} = props.style || {};
   return {
     ...(tableWidth && {width: tableWidth}),
     ...(tableBorderColor && {borderColor: tableBorderColor}),
@@ -54,14 +54,14 @@ const tableStyle = computed(() => {
 });
 
 const tableHeaderLineStyle = computed(() => {
-  const { tableHeaderBackgroundColor } = props.style || {};
+  const {tableHeaderBackgroundColor} = props.style || {};
   return {
     ...(tableHeaderBackgroundColor && {backgroundColor: tableHeaderBackgroundColor}),
   };
 });
 
 const tableHeaderFontStyle = computed(() => {
-  const { tableThFontSize, tableThFontWeight } = props.style || {};
+  const {tableThFontSize, tableThFontWeight} = props.style || {};
   return {
     ...(tableThFontSize && {fontSize: tableThFontSize}),
     ...(tableThFontWeight && {fontWeight: tableThFontWeight}),
@@ -69,7 +69,7 @@ const tableHeaderFontStyle = computed(() => {
 });
 
 const tableBodyFontStyle = computed(() => {
-  const { tableTdFontSize, tableTdFontWeight } = props.style || {};
+  const {tableTdFontSize, tableTdFontWeight} = props.style || {};
   return {
     ...(tableTdFontSize && {fontSize: tableTdFontSize}),
     ...(tableTdFontWeight && {fontWeight: tableTdFontWeight}),
@@ -78,7 +78,7 @@ const tableBodyFontStyle = computed(() => {
 
 const tableBodyLineStyle = computed(() => (key) => {
 
-  const { tableBodyTrHoverBackgroundColor } = props.style || {};
+  const {tableBodyTrHoverBackgroundColor} = props.style || {};
 
   if (hoverLineKey === undefined) {
     return {}
@@ -104,7 +104,7 @@ const tableBodyLineStyle = computed(() => (key) => {
       </th>
     </tr>
     </thead>
-    <tbody>
+    <tbody v-if="props.data && props.data.length > 0">
     <tr v-for="(lineItem, key) in data" :key="key" class="basic-table__body-line" :style="tableBodyLineStyle(key)"
         @mouseover="hoverLineKey = key" @mouseout="hoverLineKey = undefined">
       <td v-for="(h) in header">
@@ -112,6 +112,13 @@ const tableBodyLineStyle = computed(() => (key) => {
       </td>
       <td v-if="$slots.default">
         <slot :lineItem="lineItem"></slot>
+      </td>
+    </tr>
+    </tbody>
+    <tbody v-else class="basic-table__body-empty">
+    <tr>
+      <td :colspan="header.length + ($slots.default ? 1 : 0)">
+        <p class="basic-table__body-empty__font basic-table__body-font">No data</p>
       </td>
     </tr>
     </tbody>
@@ -195,5 +202,13 @@ th {
 td {
   padding: 6px 10px;
   border: none;
+}
+
+.basic-table__body-empty {
+  height: 100px;
+}
+
+.basic-table__body-empty__font {
+  text-align: center;
 }
 </style>
