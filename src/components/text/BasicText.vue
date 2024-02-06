@@ -2,24 +2,24 @@
 import {computed, defineProps} from "vue";
 
 const props = defineProps({
+  /**
+   * The style object to be applied to the text.
+   * @type {Object}
+   * fontSize: The font size of the text.
+   * fontWeight: The font weight of the text.
+   * color: The color of the text.
+   */
   style: {
-    type: Object,
-    default: () => {
-      return {
-        fontSize: 'var(--font-size)',
-        fontWeight: 'var(--font-weight)',
-        color: 'var(--color-text)',
-      };
-    },
+    type: Object
   },
 });
 
 const computedStyle = computed(() => {
-  const { fontSize, color, fontWeight } = props.style;
+  const { fontSize, color, fontWeight } = props.style || {};
   return {
-    ...(fontSize && { fontSize }),
-    ...(fontWeight && { fontWeight }),
-    ...(color && { color }),
+    ...(fontSize && { fontSize: fontSize }),
+    ...(fontWeight && { fontWeight: fontWeight }),
+    ...(color && { color: color }),
   };
 });
 
