@@ -51,9 +51,23 @@ const tableData = [
         </basic-table>
       </div>
     </div>
+    <div class="tables-preview__buttons">
+      <div class="tables-preview__button">
+        <basic-table :header="tableHeader" :data="[]"></basic-table>
+      </div>
+    </div>
+    <div class="tables-preview__buttons">
+      <div class="tables-preview__button">
+        <basic-table :header="tableHeader" :is-loading="true"></basic-table>
+      </div>
+    </div>
   </div>
 </template>
 
 <style scoped>
-
+.tables-preview__buttons {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
 </style>

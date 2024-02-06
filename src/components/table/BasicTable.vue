@@ -14,6 +14,10 @@ const props = defineProps({
    * tableTdFontSize: The font size of the table data.
    * tableTdFontWeight: The font weight of the table data.
    * tableBodyTrHoverBackgroundColor: The background color of the table body row when hovered.
+   * loadingRingSize: The size of the loading ring.
+   * loadingRingWeight: The weight of the loading ring.
+   * loadingRingColor: The color of the loading ring.
+   * loadingRingBackgroundColor: The background color of the loading ring.
    */
   style: {
     type: Object,
@@ -40,6 +44,10 @@ const props = defineProps({
     default: () => {
       return [];
     },
+  },
+  isLoading: {
+    type: Boolean,
+    default: false,
   },
 });
 
@@ -90,6 +98,16 @@ const tableBodyLineStyle = computed(() => (key) => {
     };
   }
 });
+
+const loadingRingStyle = computed(() => {
+  const { loadingRingSize, loadingRingWeight, loadingRingColor, loadingRingBackgroundColor } = props.style || {};
+  return {
+    ...(loadingRingSize && { width: loadingRingSize }),
+    ...(loadingRingSize && { height: loadingRingSize }),
+    ...(loadingRingWeight && loadingRingBackgroundColor && { border: `${loadingRingWeight} solid ${loadingRingBackgroundColor}` }),
+    ...(loadingRingColor && { borderTopColor: loadingRingColor }),
+  };
+});
 </script>
 
 <template>
@@ -104,7 +122,16 @@ const tableBodyLineStyle = computed(() => (key) => {
       </th>
     </tr>
     </thead>
-    <tbody v-if="props.data && props.data.length > 0">
+    <tbody v-if="isLoading" class="basic-table__loading-body">
+    <tr>
+      <td :colspan="header.length + ($slots.default ? 1 : 0)">
+        <div class="basic-table__loading-body__loading-ring-container">
+          <p class="basic-table__loading-body__loading-ring" :style="loadingRingStyle"></p>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+    <tbody v-else-if="props.data && props.data.length > 0">
     <tr v-for="(lineItem, key) in data" :key="key" class="basic-table__body-line" :style="tableBodyLineStyle(key)"
         @mouseover="hoverLineKey = key" @mouseout="hoverLineKey = undefined">
       <td v-for="(h) in header">
@@ -115,10 +142,10 @@ const tableBodyLineStyle = computed(() => (key) => {
       </td>
     </tr>
     </tbody>
-    <tbody v-else class="basic-table__body-empty">
+    <tbody v-else class="basic-table__empty-body">
     <tr>
       <td :colspan="header.length + ($slots.default ? 1 : 0)">
-        <p class="basic-table__body-empty__font basic-table__body-font">No data</p>
+        <p class="basic-table__empty-body__font basic-table__body-font">No data</p>
       </td>
     </tr>
     </tbody>
@@ -135,6 +162,10 @@ const tableBodyLineStyle = computed(() => (key) => {
   --table-td-font-size: 15px;
   --table-td-font-weight: normal;
   --table-body-tr-hover-background-color: #f2f2f2;
+  --loading-ring-size: 16px;
+  --loading-ring-weight: 2px;
+  --loading-ring-color: #6070ff;
+  --loading-ring-background-color: #f1f1f1;
 }
 
 .basic-table__font {
@@ -204,11 +235,43 @@ td {
   border: none;
 }
 
-.basic-table__body-empty {
+.basic-table__empty-body {
   height: 100px;
 }
 
-.basic-table__body-empty__font {
+.basic-table__empty-body__font {
   text-align: center;
 }
+
+.basic-table__loading-body {
+  height: 100px;
+}
+
+.basic-table__loading-body__loading-ring-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.basic-table__loading-body__loading-ring {
+  width: var(--loading-ring-size);
+  height: var(--loading-ring-size);
+  border: var(--loading-ring-weight) solid var(--loading-ring-background-color);
+  border-top-color: var(--loading-ring-color);
+  border-radius: 50%;
+  background-color: transparent;
+  animation: basic-table__loading-body__spin-ring 1s linear infinite;
+}
+
+@keyframes basic-table__loading-body__spin-ring {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 </style>
