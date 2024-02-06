@@ -4,29 +4,37 @@ import {computed, ref} from "vue";
 const isHovered = ref(false);
 
 const props = defineProps({
+  /**
+   * The style of the button configuration.
+   * @type {Object}
+   * width: The width of the button.
+   * height: The height of the button.
+   * border: The border of the button.
+   * borderRadius: The border radius of the button.
+   * backgroundColor: The background color of the button.
+   * hoverBackgroundColor: The background color of the button when hovered.
+   * color: The color of the button.
+   * hoverColor: The color of the button when hovered.
+   * loadingRingSize: The size of the loading ring.
+   * loadingRingWeight: The weight of the loading ring.
+   * loadingRingColor: The color of the loading ring.
+   * loadingRingBackgroundColor: The background color of the loading ring.
+   */
   style: {
-    type: Object,
-    default: () => {
-      return {
-        width: 'var(--width)',
-        height: 'var(--height)',
-        border: 'var(--border)',
-        borderRadius: 'var(--border-radius)',
-        backgroundColor: 'var(--background-color)',
-        hoverBackgroundColor: 'var(--background-color-hover)',
-        color: 'var(--color)',
-        hoverColor: 'var(--color-hover)',
-        loadingRingSize: 'var(--loading-ring-size)',
-        loadingRingWeight: 'var(--loading-ring-weight)',
-        loadingRingColor: 'var(--loading-ring-color)',
-        loadingRingBackgroundColor: 'var(--loading-ring-background-color)',
-      };
-    },
+    type: Object
   },
+  /**
+   * The loading state of the button.
+   * @type {Boolean}
+   */
   isLoading: {
     type: Boolean,
     default: false,
   },
+  /**
+   * The click event of the button.
+   * @type {Function}
+   */
   handleClick: {
     type: Function,
     default: () => {
@@ -35,7 +43,7 @@ const props = defineProps({
 });
 
 const buttonStyle = computed(() => {
-  const { width, height, border, borderRadius, backgroundColor, hoverBackgroundColor, color, hoverColor } = props.style;
+  const { width, height, border, borderRadius, backgroundColor, hoverBackgroundColor, color, hoverColor } = props.style || {};
   return {
     ...(width && { width }),
     ...(height && { height }),
@@ -49,7 +57,7 @@ const buttonStyle = computed(() => {
 });
 
 const loadingRingStyle = computed(() => {
-  const { loadingRingSize, loadingRingWeight, loadingRingColor, loadingRingBackgroundColor } = props.style;
+  const { loadingRingSize, loadingRingWeight, loadingRingColor, loadingRingBackgroundColor } = props.style || {};
   return {
     ...(loadingRingSize && { width: loadingRingSize }),
     ...(loadingRingSize && { height: loadingRingSize }),
