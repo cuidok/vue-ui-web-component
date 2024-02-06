@@ -3,6 +3,7 @@
 import ButtonPreview from "@/page/preview/ButtonPreview.vue";
 import TextPreview from "@/page/preview/TextPreview.vue";
 import TablePreview from "@/page/preview/TablePreview.vue";
+import InputPreview from "@/page/preview/InputPreview.vue";
 </script>
 
 <template>
@@ -10,6 +11,7 @@ import TablePreview from "@/page/preview/TablePreview.vue";
     <div class="app__menu"></div>
     <div class="app__body">
       <text-preview></text-preview>
+      <input-preview></input-preview>
       <button-preview></button-preview>
       <table-preview></table-preview>
     </div>
