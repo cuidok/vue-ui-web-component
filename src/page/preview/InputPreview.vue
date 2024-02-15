@@ -1,6 +1,7 @@
 <script setup>
 
 import BasicInput from "@/components/input/BasicInput.vue";
+import LabelInput from "@/components/input/LabelInput.vue";
 </script>
 
 <template>
@@ -12,10 +13,15 @@ import BasicInput from "@/components/input/BasicInput.vue";
       <div class="input-preview__input">
         <basic-input></basic-input>
       </div>
+      <div class="input-preview__input">
+        <label-input :label="'This is label'" :placeholder="'This is placeholder'" :style="{width: '200px', placeholderColor: 'red'}"></label-input>
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-
+.input-preview__input {
+  margin-bottom: 10px;
+}
 </style>
