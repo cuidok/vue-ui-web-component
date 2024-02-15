@@ -137,7 +137,7 @@ const loadingRingStyle = computed(() => {
       <td v-for="(h) in header">
         <p class="basic-table__body-font basic-table__font">{{ lineItem[h.key] }}</p>
       </td>
-      <td v-if="$slots.default">
+      <td v-if="$slots.default" class="basic-table__operators">
         <slot :lineItem="lineItem"></slot>
       </td>
     </tr>
@@ -263,6 +263,11 @@ td {
   border-radius: 50%;
   background-color: transparent;
   animation: basic-table__loading-body__spin-ring 1s linear infinite;
+}
+
+.basic-table__operators {
+  display: flex;
+  flex-direction: row;
 }
 
 @keyframes basic-table__loading-body__spin-ring {
