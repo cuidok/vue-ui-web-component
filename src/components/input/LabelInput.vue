@@ -31,8 +31,17 @@ const props = defineProps({
   },
   label: {
     type: String
+  },
+  modelValue: {
+    type: String
   }
 });
+
+const emit = defineEmits(['update:modelValue'])
+
+const onInput = (event) => {
+  emit('update:modelValue', event.target.value)
+}
 
 const containerStyle = computed(() => {
   const {width, height} = props.style || {};
@@ -97,7 +106,8 @@ const inputStyle = computed(() => {
            :placeholder="placeholder"
            :style="inputStyle"
            @focus="isFocus = true"
-           @blur="isFocus = false"/>
+           @blur="isFocus = false"
+           @input="onInput"/>
   </div>
 </template>
 
