@@ -4,6 +4,7 @@ import ButtonPreview from "@/page/preview/ButtonPreview.vue";
 import TextPreview from "@/page/preview/TextPreview.vue";
 import TablePreview from "@/page/preview/TablePreview.vue";
 import InputPreview from "@/page/preview/InputPreview.vue";
+import NotificationPreview from "@/page/preview/NotificationPreview.vue";
 </script>
 
 <template>
@@ -14,6 +15,7 @@ import InputPreview from "@/page/preview/InputPreview.vue";
       <input-preview></input-preview>
       <button-preview></button-preview>
       <table-preview></table-preview>
+      <notification-preview></notification-preview>
     </div>
   </div>
 </template>
