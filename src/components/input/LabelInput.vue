@@ -2,6 +2,21 @@
 import {computed, ref} from "vue";
 
 const props = defineProps({
+  /**
+   * The style of the input configuration.
+   * @type {Object}
+   * width: The width of the input.
+   * height: The height of the input.
+   * labelFontSize: The font size of the label.
+   * labelFontColor: The font color of the label.
+   * labelFontWeight: The font weight of the label.
+   * inputPadding: The padding of the input.
+   * inputFontSize: The font size of the input.
+   * inputFontColor: The font color of the input.
+   * inputBorderColor: The border color of the input.
+   * inputBorderRadius: The border radius of the input.
+   * focusBorderColor: The border color of the input when focused.
+   */
   style: {
     type: Object
   },
