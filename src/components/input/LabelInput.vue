@@ -100,8 +100,8 @@ const inputStyle = computed(() => {
   --input-placeholder-font-color: #999;
   --input-placeholder-font-size: 14px;
   --label-font-size: 14px;
-  --label-font-color: #656565;
-  --label-font-weight: 500;
+  --label-font-color: #808080;
+  --label-font-weight: normal;
 }
 
 .label-input__container {
