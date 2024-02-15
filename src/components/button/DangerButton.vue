@@ -3,7 +3,7 @@ import BasicButton from "@/components/button/BasicButton.vue";
 import {computed, ref} from "vue";
 
 const theme = ref({
-  backgroundColor: '#ffebeb',
+  backgroundColor: '#f1f1f1',
   hoverBackgroundColor: '#ff4d4f',
   color: '#ff4d4f',
   hoverColor: '#fff',
