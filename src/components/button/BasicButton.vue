@@ -49,7 +49,7 @@ const buttonStyle = computed(() => {
     ...(height && { height }),
     ...(border && { border }),
     ...(borderRadius && { borderRadius }),
-    ...(isHovered.value && backgroundColor && { backgroundColor: hoverBackgroundColor }),
+    ...(isHovered.value && hoverBackgroundColor && { backgroundColor: hoverBackgroundColor }),
     ...(!isHovered.value && backgroundColor && { backgroundColor }),
     ...(isHovered.value && color && { color: hoverColor }),
     ...(!isHovered.value && color && { color }),
