@@ -19,8 +19,17 @@ const props = defineProps({
   },
   placeholder: {
     type: String,
+  },
+  modelValue: {
+    type: String
   }
 });
+
+const emit = defineEmits(['update:modelValue'])
+
+const onInput = (event) => {
+  emit('update:modelValue', event.target.value)
+}
 
 const isFocus = ref(false);
 
@@ -54,7 +63,8 @@ const inputStyle = computed(() => {
          :placeholder="placeholder"
          @focus="isFocus = true"
          @blur="isFocus = false"
-         :style="inputStyle">
+         :style="inputStyle"
+         @input="onInput">
 </template>
 
 <style scoped>
