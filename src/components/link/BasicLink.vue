@@ -5,10 +5,6 @@ const props = defineProps({
   style: {
     type: Object,
   },
-  content: {
-    type: String,
-    required: true,
-  },
   handleClick: {
     type: Function,
     required: true,
@@ -26,7 +22,9 @@ const linkFontStyle = () => {
 </script>
 
 <template>
-  <a class="basic-link__font basic-link__style" @click="handleClick" :style="linkFontStyle"> {{content}} </a>
+  <a class="basic-link__font basic-link__style" @click="handleClick" :style="linkFontStyle">
+    <slot></slot>
+  </a>
 </template>
 
 <style scoped>
