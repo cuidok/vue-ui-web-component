@@ -1,10 +1,10 @@
 <script setup>
-
 import ButtonPreview from "@/page/preview/ButtonPreview.vue";
 import TextPreview from "@/page/preview/TextPreview.vue";
 import TablePreview from "@/page/preview/TablePreview.vue";
 import InputPreview from "@/page/preview/InputPreview.vue";
 import NotificationPreview from "@/page/preview/NotificationPreview.vue";
+import LinkPreview from "@/page/preview/LinkPreview.vue";
 </script>
 
 <template>
@@ -12,6 +12,7 @@ import NotificationPreview from "@/page/preview/NotificationPreview.vue";
     <div class="app__menu"></div>
     <div class="app__body">
       <text-preview></text-preview>
+      <link-preview></link-preview>
       <input-preview></input-preview>
       <button-preview></button-preview>
       <table-preview></table-preview>
