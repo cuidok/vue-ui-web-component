@@ -166,6 +166,7 @@ const inputStyle = computed(() => {
   width: 100%;
   height: 100%;
   padding: var(--input-padding);
+  box-sizing: border-box;
   font-size: var(--input-font-size);
   color: var(--input-font-color);
   border: 1px solid var(--input-border-color);
