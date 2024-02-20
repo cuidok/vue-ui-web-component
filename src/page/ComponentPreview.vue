@@ -9,14 +9,19 @@ import LinkPreview from "@/page/preview/LinkPreview.vue";
 
 <template>
   <div class="app__container">
-    <div class="app__menu"></div>
+    <div class="app__header">
+      Vue UI web components
+    </div>
     <div class="app__body">
-      <text-preview></text-preview>
-      <link-preview></link-preview>
-      <input-preview></input-preview>
-      <button-preview></button-preview>
-      <table-preview></table-preview>
-      <notification-preview></notification-preview>
+      <div class="app__menu"></div>
+      <div class="app__preview">
+        <text-preview></text-preview>
+        <link-preview></link-preview>
+        <input-preview></input-preview>
+        <button-preview></button-preview>
+        <table-preview></table-preview>
+        <notification-preview></notification-preview>
+      </div>
     </div>
   </div>
 </template>
@@ -29,17 +34,35 @@ import LinkPreview from "@/page/preview/LinkPreview.vue";
   margin: 0;
   padding: 0;
   display: flex;
+  flex-direction: column;
+}
+
+.app__header {
+  width: 100%;
+  height: 50px;
+  background-color: #2d2d2d;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: #cccccc;
+}
+
+.app__body {
+  width: 100%;
+  height: calc(100% - 50px);
+  display: flex;
   flex-direction: row;
 }
 
 .app__menu {
-  width: 100px;
+  width: 400px;
   height: 100%;
-  margin-right: 10px;
+  margin-right: 100px;
 }
 
-.app__body {
-  width: calc(100% - 100px);;
+.app__preview {
   height: 100%;
   display: flex;
   flex-direction: column;
