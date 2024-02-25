@@ -6,7 +6,6 @@ const isHovered = ref(false);
 const props = defineProps({
   /**
    * The style of the button configuration.
-   * @type {Object}
    * width: The width of the button.
    * height: The height of the button.
    * border: The border of the button.
@@ -25,7 +24,6 @@ const props = defineProps({
   },
   /**
    * The loading state of the button.
-   * @type {Boolean}
    */
   isLoading: {
     type: Boolean,
@@ -33,7 +31,6 @@ const props = defineProps({
   },
   /**
    * The click event of the button.
-   * @type {Function}
    */
   handleClick: {
     type: Function,
